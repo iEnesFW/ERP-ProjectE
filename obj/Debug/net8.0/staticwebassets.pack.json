@@ -2,7 +2,7 @@
   "Files": [
     {
       "Id": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ProjectE.bundle.scp.css",
-      "PackagePath": "staticwebassets\\ProjectE.bundle.scp.css"
+      "PackagePath": "staticwebassets\\ProjectE.8nmvpu2wjg.bundle.scp.css"
     },
     {
       "Id": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\assets\\css\\animate.css",
@@ -417,6 +417,14 @@
       "PackagePath": "staticwebassets\\assets\\img\\logo\\logo.svg"
     },
     {
+      "Id": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\assets\\img\\logo\\yedek\\logo-white.svg",
+      "PackagePath": "staticwebassets\\assets\\img\\logo\\yedek\\logo-white.svg"
+    },
+    {
+      "Id": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\assets\\img\\logo\\yedek\\logo.svg",
+      "PackagePath": "staticwebassets\\assets\\img\\logo\\yedek\\logo.svg"
+    },
+    {
       "Id": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\assets\\img\\logos\\mastercard.png",
       "PackagePath": "staticwebassets\\assets\\img\\logos\\mastercard.png"
     },
@@ -685,6 +693,22 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\js\\Index.js",
+      "PackagePath": "staticwebassets\\js\\Index.js"
+    },
+    {
+      "Id": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\js\\Privacy.js",
+      "PackagePath": "staticwebassets\\js\\Privacy.js"
+    },
+    {
+      "Id": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\js\\SignIn.js",
+      "PackagePath": "staticwebassets\\js\\SignIn.js"
+    },
+    {
+      "Id": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\js\\SignUp.js",
+      "PackagePath": "staticwebassets\\js\\SignUp.js"
+    },
+    {
       "Id": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
@@ -915,6 +939,10 @@
     {
       "Id": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.ProjectE.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.ProjectE.Microsoft.AspNetCore.StaticWebAssets.props",
