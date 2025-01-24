@@ -1,3 +1,6 @@
+- Vue.JS based
+- .js and .cshtml files seperated
+
 Installed NUGGET's
 
 1. BCrypt.Net-Next
