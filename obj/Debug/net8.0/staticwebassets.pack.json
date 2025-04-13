@@ -681,6 +681,14 @@
       "PackagePath": "staticwebassets\\assets\\js\\wow.min.js"
     },
     {
+      "Id": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\css\\input.css",
+      "PackagePath": "staticwebassets\\css\\input.css"
+    },
+    {
+      "Id": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\css\\output.css",
+      "PackagePath": "staticwebassets\\css\\output.css"
+    },
+    {
       "Id": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -693,8 +701,16 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\js\\Dashboard.js",
+      "PackagePath": "staticwebassets\\js\\Dashboard.js"
+    },
+    {
       "Id": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\js\\Index.js",
       "PackagePath": "staticwebassets\\js\\Index.js"
+    },
+    {
+      "Id": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\js\\Layout.js",
+      "PackagePath": "staticwebassets\\js\\Layout.js"
     },
     {
       "Id": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\js\\Privacy.js",

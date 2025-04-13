@@ -39,7 +39,7 @@
             <div class="flex -mx-4 items-center justify-between relative">
                 <div class="px-4 w-60 max-w-full">
                     <a href="@Url.Action("Index", "Home")" class="navbar-logo w-full block py-5">
-                        <img src="~/assets/img/logo/logo-white.svg"
+                        <img src="assets/img/logo/logo-white.svg"
                              alt="logo"
                              class="w-full header-logo" />
                     </a>
@@ -98,11 +98,11 @@
                         mx-8
                         lg:mr-0
                       ">
-                                        Home
+                                        Anasayfa
                                     </a>
                                 </li>
                                 <li class="relative group">
-                                    <a href="/#about"
+                                    <a href="#about"
                                        class="
                         ud-menu-scroll
                         text-base text-dark
@@ -117,11 +117,11 @@
                         lg:mr-0 lg:ml-7
                         xl:ml-12
                       ">
-                                        About
+                                        Hakkımızda
                                     </a>
                                 </li>
                                 <li class="relative group">
-                                    <a href="/#pricing"
+                                    <a href="#pricing"
                                        class="
                         ud-menu-scroll
                         text-base text-dark
@@ -136,11 +136,11 @@
                         lg:mr-0 lg:ml-7
                         xl:ml-12
                       ">
-                                        Pricing
+                                        Fiyatlandırma
                                     </a>
                                 </li>
                                 <li class="relative group">
-                                    <a href="/#team"
+                                    <a href="#team"
                                        class="
                         ud-menu-scroll
                         text-base text-dark
@@ -155,11 +155,11 @@
                         lg:mr-0 lg:ml-7
                         xl:ml-12
                       ">
-                                        Team
+                                        Demirbaşlar
                                     </a>
                                 </li>
                                 <li class="relative group">
-                                    <a href="/#contact"
+                                    <a href="#contact"
                                        class="
                         ud-menu-scroll
                         text-base text-dark
@@ -174,10 +174,10 @@
                         lg:mr-0 lg:ml-7
                         xl:ml-12
                       ">
-                                        Contact
+                                        İletişim
                                     </a>
                                 </li>
-                                <li class="relative group submenu-item">
+                                @*  <li class="relative group submenu-item">
                                     <a href="javascript:void(0)"
                                        class="
                         text-base text-dark
@@ -205,7 +205,7 @@
                         after:-translate-y-1/2
                         after:mt-[-2px]
                       ">
-                                        Pages
+                                        Sayfalar
                                     </a>
                                     <div class="
                         submenu
@@ -315,7 +315,7 @@
                                             404 Page
                                         </a>
                                     </div>
-                                </li>
+                                </li> *@
                             </ul>
                         </nav>
                     </div>
@@ -330,7 +330,7 @@
                   px-7
                   loginBtn
                 ">
-                            Sign In
+                            Giriş
                         </a>
                         <a href="@Url.Action("SignUp", "SignUp")"
                            class="
@@ -346,7 +346,7 @@
                   duration-300
                   ease-in-out
                 ">
-                            Sign Up
+                            Kayıt Ol
                         </a>
                     </div>
                 </div>
@@ -369,7 +369,7 @@
             <div class="flex flex-wrap items-center -mx-4">
                 <div class="w-full px-4">
                     <div class="text-center">
-                        <h1 class="font-semibold text-white text-4xl">Log In Page</h1>
+                        <h1 class="font-semibold text-white text-4xl">Kayıt Ol</h1>
                     </div>
                 </div>
             </div>
@@ -455,7 +455,7 @@
                         <form>
                             <div class="mb-6">
                                 <input type="text"
-                                       placeholder="Name"
+                                       placeholder="İsim"
                                        class="
                       w-full
                       rounded-md
@@ -493,7 +493,7 @@
                             </div>
                             <div class="mb-6">
                                 <input type="password"
-                                       placeholder="Password"
+                                       placeholder="Şifre"
                                        class="
                       w-full
                       rounded-md
@@ -512,7 +512,7 @@
                             </div>
                             <div class="mb-10">
                                 <input type="submit"
-                                       value="Sign Up"
+                                       value="Kayıt Ol"
                                        class="
                       w-full
                       rounded-md
@@ -530,7 +530,7 @@
                     " />
                             </div>
                         </form>
-                        <p class="text-base mb-6 text-[#adadad]">Connect With</p>
+@*                         <p class="text-base mb-6 text-[#adadad]">Connect With</p>
                         <ul class="flex justify-between -mx-2 mb-12">
                             <li class="px-2 w-full">
                                 <a href="javascript:void(0)"
@@ -598,25 +598,25 @@
                                     </svg>
                                 </a>
                             </li>
-                        </ul>
+                        </ul> *@
 
                         <p class="text-base text-[#adadad] mb-4">
-                            By creating an account you are agree with our
+                            Bir hesap oluşturarak, bizimle anlaşmış olursunuz.
                             <a href="javascript:void(0)"
                                class="text-primary hover:underline">
-                                Privacy
+                                Gizlilik
                             </a>
-                            and
+                            ve
                             <a href="javascript:void(0)"
                                class="text-primary hover:underline">
-                                Policy
+                                Politikamız
                             </a>
                         </p>
 
                         <p class="text-base text-[#adadad]">
-                            Already have an account?
+                            Kayıtlı mısınız?
                             <a href="@Url.Action("SignIn", "SignIn")" class="text-primary hover:underline">
-                                Sign In
+                                Giriş Yap
                             </a>
                         </p>
 
@@ -793,13 +793,12 @@
                     <div class="w-full mb-10">
                         <a href="javascript:void(0)"
                            class="inline-block max-w-[160px] mb-6">
-                            <img src="~/assets/img/logo/logo-white.svg"
+                            <img src="assets/img/logo/logo-white.svg"
                                  alt="logo"
                                  class="max-w-full" />
                         </a>
                         <p class="text-base text-[#f3f4fe] mb-7">
-                            We create digital experiences for brands and companies by using
-                            technology.
+                            Teknolojiyi kullanarak markalar ve şirketler için dijital deneyimler yaratıyoruz.
                         </p>
                         <div class="flex items-center -mx-3">
                             <a href="javascript:void(0)"
@@ -845,7 +844,7 @@
                 </div>
                 <div class="w-full sm:w-1/2 md:w-1/2 lg:w-2/12 xl:w-2/12 px-4">
                     <div class="w-full mb-10">
-                        <h4 class="text-white text-lg font-semibold mb-9">About Us</h4>
+                        <h4 class="text-white text-lg font-semibold mb-9">Hakkımızda</h4>
                         <ul>
                             <li>
                                 <a href="javascript:void(0)"
@@ -856,7 +855,7 @@
                       leading-loose
                       mb-2
                     ">
-                                    Home
+                                    Anasayfa
                                 </a>
                             </li>
                             <li>
@@ -868,7 +867,7 @@
                       leading-loose
                       mb-2
                     ">
-                                    Features
+                                    Özellikler
                                 </a>
                             </li>
                             <li>
@@ -880,7 +879,7 @@
                       leading-loose
                       mb-2
                     ">
-                                    About
+                                    Hakkımızda
                                 </a>
                             </li>
                             <li>
@@ -892,7 +891,7 @@
                       leading-loose
                       mb-2
                     ">
-                                    Testimonial
+                                    Görüşler
                                 </a>
                             </li>
                         </ul>
@@ -900,7 +899,7 @@
                 </div>
                 <div class="w-full sm:w-1/2 md:w-1/2 lg:w-3/12 xl:w-2/12 px-4">
                     <div class="w-full mb-10">
-                        <h4 class="text-white text-lg font-semibold mb-9">Features</h4>
+                        <h4 class="text-white text-lg font-semibold mb-9">Özellikler</h4>
                         <ul>
                             <li>
                                 <a href="javascript:void(0)"
@@ -911,7 +910,7 @@
                       leading-loose
                       mb-2
                     ">
-                                    How it works
+                                    Nasıl Çalışır?
                                 </a>
                             </li>
                             <li>
@@ -923,7 +922,7 @@
                       leading-loose
                       mb-2
                     ">
-                                    Privacy policy
+                                    Gizlilik Politikası
                                 </a>
                             </li>
                             <li>
@@ -935,7 +934,7 @@
                       leading-loose
                       mb-2
                     ">
-                                    Terms of Service
+                                    Servis Şartları
                                 </a>
                             </li>
                             <li>
@@ -947,7 +946,7 @@
                       leading-loose
                       mb-2
                     ">
-                                    Refund policy
+                                    İade Politikası
                                 </a>
                             </li>
                         </ul>
@@ -956,7 +955,7 @@
                 <div class="w-full sm:w-1/2 md:w-1/2 lg:w-3/12 xl:w-2/12 px-4">
                     <div class="w-full mb-10">
                         <h4 class="text-white text-lg font-semibold mb-9">
-                            Our Products
+                            Bazı Modüllerimiz
                         </h4>
                         <ul>
                             <li>
@@ -968,7 +967,7 @@
                       leading-loose
                       mb-2
                     ">
-                                    LineIcons
+                                    Müşteriler
                                 </a>
                             </li>
                             <li>
@@ -980,7 +979,7 @@
                       leading-loose
                       mb-2
                     ">
-                                    Ecommerce HTML
+                                    Stok Depo
                                 </a>
                             </li>
                             <li>
@@ -992,7 +991,7 @@
                       leading-loose
                       mb-2
                     ">
-                                    Ayro UI
+                                    Siparişler
                                 </a>
                             </li>
                             <li>
@@ -1004,7 +1003,7 @@
                       leading-loose
                       mb-2
                     ">
-                                    PlainAdmin
+                                    Personel
                                 </a>
                             </li>
                         </ul>
@@ -1012,7 +1011,7 @@
                 </div>
                 <div class="w-full md:w-2/3 lg:w-6/12 xl:w-3/12 px-4">
                     <div class="w-full mb-10">
-                        <h4 class="text-white text-lg font-semibold mb-9">Partners</h4>
+                        <h4 class="text-white text-lg font-semibold mb-9">Partnerler</h4>
                         <ul class="flex flex-wrap items-center">
                             <li>
                                 <a href="https://tailgrids.com"
@@ -1026,7 +1025,7 @@
                       xl:max-w-[100px]
                       2xl:max-w-[120px]
                     ">
-                                    <img src="~/assets/img/footer/brands/tailgrids.svg"
+                                    <img src="assets/img/footer/brands/tailgrids.svg"
                                          alt="tailgrids" />
                                 </a>
                             </li>
@@ -1042,7 +1041,7 @@
                       xl:max-w-[100px]
                       2xl:max-w-[120px]
                     ">
-                                    <img src="~/assets/img/footer/brands/ayroui.svg"
+                                    <img src="assets/img/footer/brands/ayroui.svg"
                                          alt="ayroui" />
                                 </a>
                             </li>
@@ -1058,7 +1057,7 @@
                       xl:max-w-[100px]
                       2xl:max-w-[120px]
                     ">
-                                    <img src="~/assets/img/footer/brands/ecommerce-html.svg"
+                                    <img src="assets/img/footer/brands/ecommerce-html.svg"
                                          alt="ecommerce-html" />
                                 </a>
                             </li>
@@ -1074,7 +1073,7 @@
                       xl:max-w-[100px]
                       2xl:max-w-[120px]
                     ">
-                                    <img src="~/assets/img/footer/brands/graygrids.svg"
+                                    <img src="assets/img/footer/brands/graygrids.svg"
                                          alt="graygrids" />
                                 </a>
                             </li>
@@ -1090,7 +1089,7 @@
                       xl:max-w-[100px]
                       2xl:max-w-[120px]
                     ">
-                                    <img src="~/assets/img/footer/brands/lineicons.svg"
+                                    <img src="assets/img/footer/brands/lineicons.svg"
                                          alt="lineicons" />
                                 </a>
                             </li>
@@ -1106,7 +1105,7 @@
                       xl:max-w-[100px]
                       2xl:max-w-[120px]
                     ">
-                                    <img src="~/assets/img/footer/brands/uideck.svg"
+                                    <img src="assets/img/footer/brands/uideck.svg"
                                          alt="uideck" />
                                 </a>
                             </li>
@@ -1147,11 +1146,11 @@
                         <div class="flex justify-center md:justify-end my-1">
                             <p class="text-base text-[#f3f4fe]">
                                 Designed and Developed by
-                                <a href="https://tailgrids.com"
+                                <a href="https://www.projecte.com"
                                    rel="nofollow noopner"
                                    target="_blank"
                                    class="text-primary hover:underline">
-                                    TailGrids and UIdeck
+                                    Project-E
                                 </a>
                             </p>
                         </div>
@@ -1162,11 +1161,11 @@
 
         <div>
             <span class="absolute left-0 top-0 z-[-1]">
-                <img src="~/assets/img/footer/shape-1.svg" alt="" />
+                <img src="assets/img/footer/shape-1.svg" alt="" />
             </span>
 
             <span class="absolute bottom-0 right-0 z-[-1]">
-                <img src="~/assets/img/footer/shape-3.svg" alt="" />
+                <img src="assets/img/footer/shape-3.svg" alt="" />
             </span>
 
             <span class="absolute top-0 right-0 z-[-1]">

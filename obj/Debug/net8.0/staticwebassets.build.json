@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "IU5YBm3dZbjN0oie7lEkz/f7swByVvKEHsSj25MC7sQ=",
+  "Hash": "p+FCdD8g+xZpmlZjxe3CeEQ1/magyqDq/4ijeKvUaEk=",
   "Source": "ProjectE",
   "BasePath": "_content/ProjectE",
   "Mode": "Default",
@@ -3608,6 +3608,48 @@
       "OriginalItemSpec": "wwwroot\\assets\\js\\wow.min.js"
     },
     {
+      "Identity": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\css\\input.css",
+      "SourceId": "ProjectE",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\",
+      "BasePath": "_content/ProjectE",
+      "RelativePath": "css/input#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "sx1p942dk6",
+      "Integrity": "8JBJ/uoQJND6vk33NPJBjUpxOWf78QmLyi0vFLvuwyk=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\input.css"
+    },
+    {
+      "Identity": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\css\\output.css",
+      "SourceId": "ProjectE",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\",
+      "BasePath": "_content/ProjectE",
+      "RelativePath": "css/output#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "inwevrhb0a",
+      "Integrity": "Msh2lLCoSwv2C7s0iSS4538XlJLurucO9kA771e74U0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\output.css"
+    },
+    {
       "Identity": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\css\\site.css",
       "SourceId": "ProjectE",
       "SourceType": "Discovered",
@@ -3671,6 +3713,27 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
+      "Identity": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\js\\Dashboard.js",
+      "SourceId": "ProjectE",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\",
+      "BasePath": "_content/ProjectE",
+      "RelativePath": "js/Dashboard#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "11q0dqs1oz",
+      "Integrity": "O6dV20z7T7eNaxTeSG9OFMTxp1ssRgmWkx/fRbAq5Bc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\Dashboard.js"
+    },
+    {
       "Identity": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\js\\Index.js",
       "SourceId": "ProjectE",
       "SourceType": "Discovered",
@@ -3690,6 +3753,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\Index.js"
+    },
+    {
+      "Identity": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\js\\Layout.js",
+      "SourceId": "ProjectE",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\",
+      "BasePath": "_content/ProjectE",
+      "RelativePath": "js/Layout#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "9ittuh09z8",
+      "Integrity": "X8Mh5nXKfg/dXsvtrfcUQFvpQRQ0tDwr+/G3KBFCBKw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\Layout.js"
     },
     {
       "Identity": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\js\\Privacy.js",
@@ -3727,8 +3811,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "e8x8d6ffyh",
-      "Integrity": "wvA+JbotoQG0eJmhDyLV7bWakJTF5VC9EmYsPHikKg4=",
+      "Fingerprint": "s1675n8kut",
+      "Integrity": "oIQ+u/yemo3dChi+6yraiUS6dw9EmqBCpxkGWT41vQg=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\SignIn.js"
@@ -18833,6 +18917,170 @@
       ]
     },
     {
+      "Route": "css/input.css",
+      "AssetFile": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\css\\input.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "27"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8JBJ/uoQJND6vk33NPJBjUpxOWf78QmLyi0vFLvuwyk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 13 Apr 2025 06:46:38 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-8JBJ/uoQJND6vk33NPJBjUpxOWf78QmLyi0vFLvuwyk="
+        }
+      ]
+    },
+    {
+      "Route": "css/input.sx1p942dk6.css",
+      "AssetFile": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\css\\input.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "27"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8JBJ/uoQJND6vk33NPJBjUpxOWf78QmLyi0vFLvuwyk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 13 Apr 2025 06:46:38 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "sx1p942dk6"
+        },
+        {
+          "Name": "label",
+          "Value": "css/input.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-8JBJ/uoQJND6vk33NPJBjUpxOWf78QmLyi0vFLvuwyk="
+        }
+      ]
+    },
+    {
+      "Route": "css/output.css",
+      "AssetFile": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\css\\output.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4390"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Msh2lLCoSwv2C7s0iSS4538XlJLurucO9kA771e74U0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 13 Apr 2025 06:52:44 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Msh2lLCoSwv2C7s0iSS4538XlJLurucO9kA771e74U0="
+        }
+      ]
+    },
+    {
+      "Route": "css/output.inwevrhb0a.css",
+      "AssetFile": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\css\\output.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4390"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Msh2lLCoSwv2C7s0iSS4538XlJLurucO9kA771e74U0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 13 Apr 2025 06:52:44 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "inwevrhb0a"
+        },
+        {
+          "Name": "label",
+          "Value": "css/output.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Msh2lLCoSwv2C7s0iSS4538XlJLurucO9kA771e74U0="
+        }
+      ]
+    },
+    {
       "Route": "css/site.c2tiyv64ts.css",
       "AssetFile": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\css\\site.css",
       "Selectors": [],
@@ -18855,7 +19103,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 16 Dec 2024 10:38:50 GMT"
+          "Value": "Sun, 13 Apr 2025 06:46:39 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -18900,7 +19148,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 16 Dec 2024 10:38:50 GMT"
+          "Value": "Sun, 13 Apr 2025 06:46:39 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -19079,6 +19327,88 @@
       ]
     },
     {
+      "Route": "js/Dashboard.11q0dqs1oz.js",
+      "AssetFile": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\js\\Dashboard.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "122"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"O6dV20z7T7eNaxTeSG9OFMTxp1ssRgmWkx/fRbAq5Bc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 13 Apr 2025 06:24:03 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "11q0dqs1oz"
+        },
+        {
+          "Name": "label",
+          "Value": "js/Dashboard.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-O6dV20z7T7eNaxTeSG9OFMTxp1ssRgmWkx/fRbAq5Bc="
+        }
+      ]
+    },
+    {
+      "Route": "js/Dashboard.js",
+      "AssetFile": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\js\\Dashboard.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "122"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"O6dV20z7T7eNaxTeSG9OFMTxp1ssRgmWkx/fRbAq5Bc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 13 Apr 2025 06:24:03 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-O6dV20z7T7eNaxTeSG9OFMTxp1ssRgmWkx/fRbAq5Bc="
+        }
+      ]
+    },
+    {
       "Route": "js/Index.fsd978e1dl.js",
       "AssetFile": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\js\\Index.js",
       "Selectors": [],
@@ -19157,6 +19487,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-D1XxQTwHMls0qo8KM8zYFV23ibp6eNLOCWgHi8nvKZI="
+        }
+      ]
+    },
+    {
+      "Route": "js/Layout.9ittuh09z8.js",
+      "AssetFile": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\js\\Layout.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "119"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"X8Mh5nXKfg/dXsvtrfcUQFvpQRQ0tDwr+/G3KBFCBKw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 13 Apr 2025 06:23:34 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "9ittuh09z8"
+        },
+        {
+          "Name": "label",
+          "Value": "js/Layout.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-X8Mh5nXKfg/dXsvtrfcUQFvpQRQ0tDwr+/G3KBFCBKw="
+        }
+      ]
+    },
+    {
+      "Route": "js/Layout.js",
+      "AssetFile": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\js\\Layout.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "119"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"X8Mh5nXKfg/dXsvtrfcUQFvpQRQ0tDwr+/G3KBFCBKw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 13 Apr 2025 06:23:34 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-X8Mh5nXKfg/dXsvtrfcUQFvpQRQ0tDwr+/G3KBFCBKw="
         }
       ]
     },
@@ -19243,51 +19655,6 @@
       ]
     },
     {
-      "Route": "js/SignIn.e8x8d6ffyh.js",
-      "AssetFile": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\js\\SignIn.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "594"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"wvA+JbotoQG0eJmhDyLV7bWakJTF5VC9EmYsPHikKg4=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 01 Jan 2025 17:41:49 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "e8x8d6ffyh"
-        },
-        {
-          "Name": "label",
-          "Value": "js/SignIn.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-wvA+JbotoQG0eJmhDyLV7bWakJTF5VC9EmYsPHikKg4="
-        }
-      ]
-    },
-    {
       "Route": "js/SignIn.js",
       "AssetFile": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\js\\SignIn.js",
       "Selectors": [],
@@ -19298,7 +19665,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "594"
+          "Value": "1856"
         },
         {
           "Name": "Content-Type",
@@ -19306,11 +19673,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"wvA+JbotoQG0eJmhDyLV7bWakJTF5VC9EmYsPHikKg4=\""
+          "Value": "\"oIQ+u/yemo3dChi+6yraiUS6dw9EmqBCpxkGWT41vQg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 01 Jan 2025 17:41:49 GMT"
+          "Value": "Sat, 12 Apr 2025 10:28:23 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -19320,7 +19687,52 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-wvA+JbotoQG0eJmhDyLV7bWakJTF5VC9EmYsPHikKg4="
+          "Value": "sha256-oIQ+u/yemo3dChi+6yraiUS6dw9EmqBCpxkGWT41vQg="
+        }
+      ]
+    },
+    {
+      "Route": "js/SignIn.s1675n8kut.js",
+      "AssetFile": "C:\\Users\\Enes\\source\\repos\\ProjectE\\ProjectE\\wwwroot\\js\\SignIn.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1856"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"oIQ+u/yemo3dChi+6yraiUS6dw9EmqBCpxkGWT41vQg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 12 Apr 2025 10:28:23 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "s1675n8kut"
+        },
+        {
+          "Name": "label",
+          "Value": "js/SignIn.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-oIQ+u/yemo3dChi+6yraiUS6dw9EmqBCpxkGWT41vQg="
         }
       ]
     },
@@ -24185,7 +24597,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 23 Jan 2025 15:56:44 GMT"
+          "Value": "Fri, 24 Jan 2025 14:38:55 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -24230,7 +24642,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 23 Jan 2025 15:56:44 GMT"
+          "Value": "Fri, 24 Jan 2025 14:38:55 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -24275,7 +24687,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 23 Jan 2025 15:56:44 GMT"
+          "Value": "Fri, 24 Jan 2025 14:38:55 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -24312,7 +24724,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 23 Jan 2025 15:56:44 GMT"
+          "Value": "Fri, 24 Jan 2025 14:38:55 GMT"
         },
         {
           "Name": "Cache-Control",

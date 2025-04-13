@@ -167,10 +167,14 @@ wwwroot\assets\js\plugins\perfect-scrollbar.min.js
 wwwroot\assets\js\sidenav-burger.js
 wwwroot\assets\js\tooltips.js
 wwwroot\assets\js\wow.min.js
+wwwroot\css\input.css
+wwwroot\css\output.css
 wwwroot\css\site.css
 wwwroot\css\styles.css
 wwwroot\favicon.ico
+wwwroot\js\Dashboard.js
 wwwroot\js\Index.js
+wwwroot\js\Layout.js
 wwwroot\js\Privacy.js
 wwwroot\js\SignIn.js
 wwwroot\js\SignUp.js

@@ -412,3 +412,5 @@ C:\Users\Enes\source\repos\ProjectE\ProjectE\bin\Debug\net8.0\ProjectE.staticweb
 C:\Users\Enes\source\repos\ProjectE\ProjectE\obj\Debug\net8.0\staticwebassets.build.endpoints.json
 C:\Users\Enes\source\repos\ProjectE\ProjectE\obj\Debug\net8.0\staticwebassets\msbuild.ProjectE.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
 C:\Users\Enes\source\repos\ProjectE\ProjectE\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\Enes\source\repos\ProjectE\ProjectE\bin\Debug\net8.0\package-lock.json
+C:\Users\Enes\source\repos\ProjectE\ProjectE\bin\Debug\net8.0\package.json

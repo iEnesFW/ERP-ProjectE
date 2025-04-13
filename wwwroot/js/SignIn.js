@@ -1,26 +1,56 @@
-import { createApp } from 'vue';
+const app = Vue.createApp({
+    data() {
+        return {
+            username: '',
+            password: '',
+            message: '',
+            token: null,
+            error: '',
+            userID: null,
+            compID : null,
+        };
+    },
+    methods: {
 
-createApp({
-  data() {
-    return {
-      message: 'Sign In',
-      email: '',
-      password: ''
-    };
-  },
-  methods: {
-    signIn() {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(this.email)) {
-        alert('Geçersiz e-posta formatı.');
-        return;
-      }
-      if (this.password.length < 8) {
-        alert('Parola en az 8 karakter olmalıdır.');
-        return;
-      }
-      alert('Giriş başarılı!');
-      // Burada giriş işlemleri yapılabilir.
+        async login(event) {
+            try {
+                event.preventDefault(); // Sayfanın yenilenmesini engelle
+
+                console.log("İstek gönderiliyor...");
+
+                const loginData = {
+                    username: this.username,
+                    password: this.password
+                };
+
+                axios.post("http://localhost:5080/api/Auth/login", loginData, {
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
+                    .then(response => {
+                        console.log("Başarılı:", response.data);
+                        debugger;
+                        localStorage.setItem('token', response.data.token);
+                        localStorage.setItem('userID', response.data.userID);
+                        localStorage.setItem('compID', response.data.compID);
+
+                        window.location.href = "/Home/Dashboard";
+                    })
+                    .catch(error => {
+                        this.error = error.response ? error.response.data.message : error.message;
+                        console.log("Hata:", error.response ? error.response.data : error.message);
+                        this.token = null;
+                    });
+
+            } catch (error) {
+                console.log("Axios Hatası:", error.response ? error.response.data : error.message);
+                this.token = null;
+            }
+        }
+
+
     }
-  }
-}).mount('#app');
+});
+
+app.mount("#SignIn");
