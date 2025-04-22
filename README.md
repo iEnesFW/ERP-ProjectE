@@ -1,5 +1,8 @@
 - Vue.JS based
-- .js and .cshtml files seperated
+- JWT Login System
+- Tailwind applied
+- Layered Architecture applied
+- Works with API.ProjectE
 
 Installed NUGGET's
 
