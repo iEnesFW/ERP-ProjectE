@@ -414,3 +414,11 @@ C:\Users\Enes\source\repos\ProjectE\ProjectE\obj\Debug\net8.0\staticwebassets\ms
 C:\Users\Enes\source\repos\ProjectE\ProjectE\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\Enes\source\repos\ProjectE\ProjectE\bin\Debug\net8.0\package-lock.json
 C:\Users\Enes\source\repos\ProjectE\ProjectE\bin\Debug\net8.0\package.json
+C:\Users\Enes\source\repos\ProjectE\ProjectE\bin\Debug\net8.0\en-US\ProjectE.resources.dll
+C:\Users\Enes\source\repos\ProjectE\ProjectE\bin\Debug\net8.0\tr-TR\ProjectE.resources.dll
+C:\Users\Enes\source\repos\ProjectE\ProjectE\obj\Debug\net8.0\ProjectE.Resources.SharedResource.resources
+C:\Users\Enes\source\repos\ProjectE\ProjectE\obj\Debug\net8.0\ProjectE.Resources.SharedResource.en-US.resources
+C:\Users\Enes\source\repos\ProjectE\ProjectE\obj\Debug\net8.0\ProjectE.Resources.SharedResource.tr-TR.resources
+C:\Users\Enes\source\repos\ProjectE\ProjectE\obj\Debug\net8.0\ProjectE.csproj.GenerateResource.cache
+C:\Users\Enes\source\repos\ProjectE\ProjectE\obj\Debug\net8.0\en-US\ProjectE.resources.dll
+C:\Users\Enes\source\repos\ProjectE\ProjectE\obj\Debug\net8.0\tr-TR\ProjectE.resources.dll

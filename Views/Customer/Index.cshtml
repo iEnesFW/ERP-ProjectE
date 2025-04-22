@@ -1,0 +1,318 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //Layout = null;
+    ViewData["Title"] = "Customers";
+}
+
+
+<div id="Customer">
+
+    <!--Main Content-->
+    <div class="main-content" v-if="pageType == 1">
+        <!-- Table -->
+        <div class="col">
+            <div class="card shadow">
+                <div class="card-header border-0">
+                    <h3 style="float:left;" class="mb-0">@_localization.Getkey("Customer Cards")</h3>
+                    <div style="float:right;" class="d-flex align-items-center mt-2 mt-md-0">
+
+                        <button class="btn btn-primary" type="button" v-on:click="AddCustomerForm">
+                            <i class="fas fa-plus mr-1"></i> Add New
+                        </button>
+                        <div class="input-group">
+                            <input v-on:keyup.enter="searchCustomer" v-model="searchText" type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                                   aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button v-on:click="searchCustomer" class="btn btn-primary" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">@_localization.Getkey("Customer")</th>
+                                <th scope="col">@_localization.Getkey("Phone")</th>
+                                <th scope="col">@_localization.Getkey("Email")</th>
+                                <th scope="col">@_localization.Getkey("Deposit")</th>
+                                <th scope="col">@_localization.Getkey("Credit")</th>
+                                <th scope="col">@_localization.Getkey("Balance")</th>
+                                <th scope="col">@_localization.Getkey("Completed Orders")</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="hoverable-row"
+                                v-for="(customer, index) in customers"
+                                :key="customer.customerID"
+                                v-on:click="selectCustomer(customer)"
+                                :class="{ 'table-active': selectedCustomer && selectedCustomer.customerID === customer.customerID }"
+                                v-on:mouseleave="hover = false"
+                                :style="{ backgroundColor: hover ? 'lavenderblush' : '' }">
+                                <th scope="row">
+                                    <div class="media align-items-center">
+                                        <a href="#" class="avatar rounded-circle mr-3">
+                                            <img alt="Image placeholder" src="https://raw.githack.com/creativetimofficial/argon-dashboard/master/assets/img/theme/bootstrap.jpg">
+                                        </a>
+                                        <div class="media-body">
+                                            <span class="mb-0 text-sm">{{ customer.companyName}}</span>
+                                        </div>
+                                    </div>
+                                </th>
+                                <td>{{ customer.phoneNumber }}</td>
+                                <td>{{ customer.email }}</td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <span class="mr-2">60%</span>
+                                        <div>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>{{customer.deposit}} USD</td>
+                                <td>{{customer.credit}} USD</td>
+                                <td>{{customer.balance}} USD</td>
+
+                                <td class="text-right">
+                                    @* <div class="dropdown">
+                                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                                <a class="dropdown-item" href="#">Action</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                                <a class="dropdown-item" href="#">Something else here</a>
+                                            </div>
+                                        </div> *@
+                                    <ul class="list-inline m-0">
+                                        <li class="list-inline-item">
+                                            <button class="btn btn-warning btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card-footer py-4">
+                    <!--Details-->
+                    <nav aria-label="..." style="float:left;">
+                        <ul class="pagination justify-content-end mb-0">
+                            <li class="page-item">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-usd mr-1"></i> @_localization.Getkey("Accounts")
+                                </button>
+                            </li>
+                            <li class="page-item active">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-calculator mr-1"></i> @_localization.Getkey("Transactions")
+                                </button>
+                            </li>
+                            <li class="page-item active">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-address-book mr-1"></i> @_localization.Getkey("Addresses")
+                                </button>
+                            </li>
+                            <li class="page-item active">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-user mr-1"></i> @_localization.Getkey("Contact")
+                                </button>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!--Paging-->
+                    <nav aria-label="..." style="float:right;">
+                        <ul class="pagination justify-content-end mb-0">
+                            <li class="page-item" v-show="page > 1">
+                                <a class="page-link" v-on:click="pageChange(page - 1)" tabindex="-1">
+                                    <i class="fas fa-angle-left"></i>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                            </li>
+                            <li class="page-item" v-show="page - 1 > 0">
+                                <a class="page-link" v-on:click="pageChange(page - 1)">{{ page - 1 }} <span class="sr-only">(Previous)</span></a>
+                            </li>
+                            <li class="page-item active">
+                                <a class="page-link">{{ page }} <span class="sr-only">(Current)</span></a>
+                            </li>
+                            <li class="page-item" v-show="totalPageCount >= page + 1">
+                                <a class="page-link" v-on:click="pageChange(page + 1)">{{ page + 1 }} <span class="sr-only">(Next)</span></a>
+                            </li>
+                            <li class="page-item" v-show="totalPageCount > page">
+                                <a class="page-link" v-on:click="pageChange(page + 1)">
+                                    <i class="fas fa-angle-right"></i>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">@_localization.Getkey("Account Name")</th>
+                        <th scope="col">@_localization.Getkey("Currency")</th>
+                        <th scope="col">@_localization.Getkey("Deposit")</th>
+                        <th scope="col">@_localization.Getkey("Credit")</th>
+                        <th scope="col">@_localization.Getkey("Balance")</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="hoverable-row"
+                        v-for="(customer, index) in customers"
+                        :key="customer.customerID"
+                        v-on:click="selectCustomer(customer)"
+                        :class="{ 'table-active': selectedCustomer && selectedCustomer.customerID === customer.customerID }"
+                        v-on:mouseleave="hover = false"
+                        :style="{ backgroundColor: hover ? 'lavenderblush' : '' }">
+
+                        <td>{{ customer.phoneNumber }}</td>
+                        <td>{{ customer.email }}</td>
+                        <td>{{customer.deposit}} USD</td>
+                        <td>{{customer.credit}} USD</td>
+                        <td>{{customer.balance}} USD</td>
+
+                        <td class="text-right">
+                            @* <div class="dropdown">
+                                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                                <a class="dropdown-item" href="#">Action</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                                <a class="dropdown-item" href="#">Something else here</a>
+                                            </div>
+                                        </div> *@
+                            <ul class="list-inline m-0">
+                                <li class="list-inline-item">
+                                    <button class="btn btn-warning btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
+                                </li>
+                                <li class="list-inline-item">
+                                    <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--Accounts Detail-->
+    <div class="main-content" v-if="pageType == 2">
+        <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+            <div class="card-body p-4 p-md-5">
+                <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
+                <form>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+
+                            <div data-mdb-input-init class="form-outline">
+                                <input type="text" id="firstName" class="form-control form-control-lg" />
+                                <label class="form-label" for="firstName">First Name</label>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6 mb-4">
+
+                            <div data-mdb-input-init class="form-outline">
+                                <input type="text" id="lastName" class="form-control form-control-lg" />
+                                <label class="form-label" for="lastName">Last Name</label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-4 d-flex align-items-center">
+
+                            <div data-mdb-input-init class="form-outline datepicker w-100">
+                                <input type="text" class="form-control form-control-lg" id="birthdayDate" />
+                                <label for="birthdayDate" class="form-label">Birthday</label>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6 mb-4">
+
+                            <h6 class="mb-2 pb-1">Gender: </h6>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender"
+                                       value="option1" checked />
+                                <label class="form-check-label" for="femaleGender">Female</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender"
+                                       value="option2" />
+                                <label class="form-check-label" for="maleGender">Male</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="otherGender"
+                                       value="option3" />
+                                <label class="form-check-label" for="otherGender">Other</label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-4 pb-2">
+
+                            <div data-mdb-input-init class="form-outline">
+                                <input type="email" id="emailAddress" class="form-control form-control-lg" />
+                                <label class="form-label" for="emailAddress">Email</label>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6 mb-4 pb-2">
+
+                            <div data-mdb-input-init class="form-outline">
+                                <input type="tel" id="phoneNumber" class="form-control form-control-lg" />
+                                <label class="form-label" for="phoneNumber">Phone Number</label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+
+                            <select class="select form-control-lg">
+                                <option value="1" disabled>Choose option</option>
+                                <option value="2">Subject 1</option>
+                                <option value="3">Subject 2</option>
+                                <option value="4">Subject 3</option>
+                            </select>
+                            <label class="form-label select-label">Choose option</label>
+
+                        </div>
+                    </div>
+
+                    <div class="mt-4 pt-2">
+                        <input data-mdb-ripple-init class="btn btn-primary btn-lg" type="submit" value="Submit" />
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/js/Customer.js"></script>
+<script src="~/js/Layout.js"></script>

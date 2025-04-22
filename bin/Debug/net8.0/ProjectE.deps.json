@@ -332,6 +332,14 @@
         "runtime": {
           "ProjectE.dll": {}
         },
+        "resources": {
+          "en-US/ProjectE.resources.dll": {
+            "locale": "en-US"
+          },
+          "tr-TR/ProjectE.resources.dll": {
+            "locale": "tr-TR"
+          }
+        },
         "compile": {
           "ProjectE.dll": {}
         }

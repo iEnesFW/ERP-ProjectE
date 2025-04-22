@@ -7,8 +7,15 @@ const app = Vue.createApp({
             token: null,
             error: '',
             userID: null,
-            compID : null,
+            compID: null,
+            globalStore: window.globalStore
         };
+    },
+    mounted() {
+        const token = localStorage.getItem('token');
+        if (token) {
+            this.loginWithToken(token);
+        }
     },
     methods: {
 
@@ -23,7 +30,7 @@ const app = Vue.createApp({
                     password: this.password
                 };
 
-                axios.post("http://localhost:5080/api/Auth/login", loginData, {
+                axios.post(this.globalStore.baseURL + "Auth/login", loginData, {
                     headers: {
                         "Content-Type": "application/json"
                     }
@@ -35,6 +42,10 @@ const app = Vue.createApp({
                         localStorage.setItem('userID', response.data.userID);
                         localStorage.setItem('compID', response.data.compID);
 
+                        this.globalStore.token = response.data.token;
+                        this.globalStore.userID = response.data.userID;
+                        this.globalStore.compID = response.data.compID;
+                        this.globalStore.modules = response.data.modules;
                         window.location.href = "/Home/Dashboard";
                     })
                     .catch(error => {
@@ -47,6 +58,29 @@ const app = Vue.createApp({
                 console.log("Axios Hatası:", error.response ? error.response.data : error.message);
                 this.token = null;
             }
+        },
+        async loginWithToken(token) {
+            try {
+                debugger;
+                const response = await axios.post(this.globalStore.baseURL + 'Auth/validateToken', { token });
+
+                if (response.data.isValid) {
+                    // Token geçerli, yönlendir
+                    this.globalStore.token = token;
+                    this.globalStore.userID = response.data.user.userID;
+                    this.globalStore.compID = response.data.user.compID;
+                    this.globalStore.modules = response.data.user.moduleText;
+                    window.location.href = "/Home/Dashboard";
+                } else {
+                    // Token geçersizse login ekranına yönlendir
+                    console.log("Gecersiz Token");
+                    this.isLoading = false;
+                }
+            } catch (error) {
+                // API hatası varsa yine login'e yönlendir
+                console.log("Unknown axios error.");
+                this.isLoading = false;
+            }
         }
 
 
@@ -54,3 +88,5 @@ const app = Vue.createApp({
 });
 
 app.mount("#SignIn");
+
+
