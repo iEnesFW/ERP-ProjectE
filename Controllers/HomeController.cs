@@ -13,16 +13,23 @@ namespace ProjectE.Controllers
         {
             _logger = logger;
         }
-        public IActionResult ChangeLanguage(string culture)
+        [HttpPost]
+        public IActionResult ChangeLanguage([FromBody] LanguageModel model)
         {
             Response.Cookies.Append(CookieRequestCultureProvider.DefaultCookieName,
-                CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)), new CookieOptions()
+                CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(model.Culture)), new CookieOptions()
                 {
                     Expires = DateTimeOffset.UtcNow.AddYears(1),
-                    Secure = true, 
+                    Secure = true,
                     SameSite = SameSiteMode.Lax,
                 });
-            return Redirect(Request.Headers["Referer"].ToString());
+
+            return Json(new { success = true });
+        }
+
+        public class LanguageModel
+        {
+            public string Culture { get; set; }
         }
         public IActionResult Index()
         {

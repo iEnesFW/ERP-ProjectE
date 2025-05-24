@@ -543,21 +543,23 @@ a.btn.disabled {
     margin-bottom: 0;
     padding: 1.25rem 1.5rem;
     border-bottom: 1px solid rgba(0, 0, 0, .05);
-    background-color: #fff;
+    background-color: #4e73df;
 }
 
     .card-header:first-child {
         border-radius: calc(.375rem - 1px) calc(.375rem - 1px) 0 0;
+        background: #4e73df;
     }
 
 .card-footer {
     padding: 1.25rem 1.5rem;
     border-top: 1px solid rgba(0, 0, 0, .05);
-    background-color: #fff;
+    background-color: #4e73df;
 }
 
     .card-footer:last-child {
         border-radius: 0 0 calc(.375rem - 1px) calc(.375rem - 1px);
+        background-color: #4e73df;
     }
 
 .pagination {
@@ -611,7 +613,7 @@ a.btn.disabled {
     z-index: 1;
     color: #fff;
     border-color: #5e72e4;
-    background-color: #5e72e4;
+    background-color: #17a673;
 }
 
 .page-item.disabled .page-link {
@@ -1477,6 +1479,13 @@ p {
     line-height: 1.7;
 }
 
+
+.detailHead {
+    background-color: #4e73df !important;
+}
+.detailHead th{
+    color: #fff !important;
+}
 
 @media (max-width: 768px) {
     .btn {

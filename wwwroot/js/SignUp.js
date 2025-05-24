@@ -5,6 +5,8 @@ if (document.getElementById("SignIn")) {
         data() {
             return {
                 title: "Baþlýk",
+                globalStore: window.globalStore,
+                isLoading : false
             };
         },
 
@@ -23,12 +25,17 @@ if (document.getElementById("SignIn")) {
             async loginWithToken(token) {
                 try {
                     debugger;
-                    const response = await axios.post('https://localhost:5080/api/Auth/validateToken', { token });
+                    const response = await axios.post(this.globalStore.baseURL + 'Auth/validateToken', { token });
 
                     if (response.data.isValid) {
                         // Token geçerli, yönlendir
+                        localStorage.setItem('token', token);
+                        localStorage.setItem('userID', response.data.userID);
+                        localStorage.setItem('compID', response.data.compID);
+                        localStorage.setItem('modules', response.data.moduleText);
+                        localStorage.setItem('lang', response.data.lang);
+
                         window.location.href = "/Home/Dashboard";
-                        document.body.classList.remove("preload");
                     } else {
                         // Token geçersizse login ekranýna yönlendir
                         console.log("Gecersiz Token");

@@ -5,7 +5,11 @@
   },
   "dependencies": {
     "flag-icon-css": "^4.1.7",
-    "vue": "^2.7.16"
+    "intl-tel-input": "^25.3.1",
+    "select2-vue-component": "^6.1.1",
+    "vite": "^6.3.3",
+    "vue": "^3.5.13",
+    "vue3-select2-component": "^0.1.7"
   },
   "name": "projecte",
   "version": "1.0.0",

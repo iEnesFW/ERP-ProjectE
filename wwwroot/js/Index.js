@@ -4,7 +4,8 @@ if (document.getElementById("Index")) {
         data() {
             return {
                 title: "Index",
-                isLoading: true
+                isLoading: true,
+                globalStore: window.globalStore
             };
         },
 
@@ -26,8 +27,12 @@ if (document.getElementById("Index")) {
 
                     if (response.data.isValid) {
                         // Token geçerli, yönlendir
+                        localStorage.setItem('token', token);
+                        localStorage.setItem('userID', response.data.userID);
+                        localStorage.setItem('compID', response.data.compID);
+                        localStorage.setItem('modules', response.data.moduleText);
+                        localStorage.setItem('lang', response.data.lang);
                         window.location.href = "/Home/Dashboard";
-                        document.body.classList.remove("preload");
                     } else {
                         // Token geçersizse login ekranýna yönlendir
                         console.log("Gecersiz Token");

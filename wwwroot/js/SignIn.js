@@ -41,11 +41,9 @@ const app = Vue.createApp({
                         localStorage.setItem('token', response.data.token);
                         localStorage.setItem('userID', response.data.userID);
                         localStorage.setItem('compID', response.data.compID);
+                        localStorage.setItem('modules', response.data.modules);
+                        localStorage.setItem('lang', response.data.lang);
 
-                        this.globalStore.token = response.data.token;
-                        this.globalStore.userID = response.data.userID;
-                        this.globalStore.compID = response.data.compID;
-                        this.globalStore.modules = response.data.modules;
                         window.location.href = "/Home/Dashboard";
                     })
                     .catch(error => {
@@ -66,10 +64,12 @@ const app = Vue.createApp({
 
                 if (response.data.isValid) {
                     // Token geçerli, yönlendir
-                    this.globalStore.token = token;
-                    this.globalStore.userID = response.data.user.userID;
-                    this.globalStore.compID = response.data.user.compID;
-                    this.globalStore.modules = response.data.user.moduleText;
+                    localStorage.setItem('token', token);
+                    localStorage.setItem('userID', response.data.userID);
+                    localStorage.setItem('compID', response.data.compID);
+                    localStorage.setItem('modules', response.data.moduleText);
+                    localStorage.setItem('lang', response.data.lang);
+
                     window.location.href = "/Home/Dashboard";
                 } else {
                     // Token geçersizse login ekranına yönlendir

@@ -5,25 +5,51 @@
 }
 
 
-<div id="Customer">
 
+<div id="Customer">
+    <!-- Onay Kutusu -->
+    <div class="modal" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmModalLabel" v-show="modalConfirmationID == 1">@_localization.Getkey("Confirmation")</h5>
+                    <h5 class="modal-title" id="confirmModalLabel" v-show="modalConfirmationID == 2">@_localization.Getkey("Confirmation")</h5>
+                    <h5 class="modal-title" id="confirmModalLabel" v-show="modalConfirmationID == 3">@_localization.Getkey("Confirmation")</h5>
+                    <h5 class="modal-title" id="confirmModalLabel" v-show="modalConfirmationID == 4">@_localization.Getkey("Confirmation")</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" v-show="modalConfirmationID == 1">@_localization.Getkey("Do you confirm to make passive?")</div>
+                <div class="modal-body" v-show="modalConfirmationID == 2">@_localization.Getkey("Do you confirm to delete the selected item?")</div>
+                <div class="modal-body" v-show="modalConfirmationID == 3">@_localization.Getkey("Do you confirm to delete the selected item?")</div>
+                <div class="modal-body" v-show="modalConfirmationID == 4">@_localization.Getkey("Do you confirm to delete the selected item?")</div>
+                <div class="modal-footer">
+                    <button data-dismiss="modal" v-on:click="showConfirm = false" type="button" class="btn btn-danger" data-dismiss="modal">@_localization.Getkey("Close")</button>
+                    <button data-dismiss="modal" v-on:click="modalConfirmation()" type="button" class="btn btn-success">@_localization.Getkey("Save Changes")</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!--Main Content-->
-    <div class="main-content" v-if="pageType == 1">
+    <div class="main-content" v-show="pageType == 1">
         <!-- Table -->
         <div class="col">
             <div class="card shadow">
                 <div class="card-header border-0">
-                    <h3 style="float:left;" class="mb-0">@_localization.Getkey("Customer Cards")</h3>
+                    <div style="float:left;" class="btn-group" role="group">
+                        <button v-on:click="AddCustomerForm" style="margin-right:0px;" class="btn btn-success" data-item="0_0" title="Add" type="button"><i class="fas fa-plus mr-1"></i></button>
+                        <button v-on:click="EditCustomerForm" class="btn btn-warning" style="margin-right:0px;" data-item="0_1" title="Edit" type="button"><i class="fas fa-edit mr-1"></i></button>
+                        <button v-on:click="RefreshCustomer" class="btn btn-info" style="margin-right:0px;" data-item="0_2" title="Refresh" type="button"><i class="fas fa-refresh mr-1"></i></button>
+                    </div>
                     <div style="float:right;" class="d-flex align-items-center mt-2 mt-md-0">
 
-                        <button class="btn btn-primary" type="button" v-on:click="AddCustomerForm">
-                            <i class="fas fa-plus mr-1"></i> Add New
-                        </button>
+
                         <div class="input-group">
                             <input v-on:keyup.enter="searchCustomer" v-model="searchText" type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
                                    aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
-                                <button v-on:click="searchCustomer" class="btn btn-primary" type="button">
+                                <button v-on:click="searchCustomer" class="btn btn-primary" style="max-height:38px;" type="button">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
@@ -37,11 +63,11 @@
                                 <th scope="col">@_localization.Getkey("Customer")</th>
                                 <th scope="col">@_localization.Getkey("Phone")</th>
                                 <th scope="col">@_localization.Getkey("Email")</th>
+                                <th scope="col">@_localization.Getkey("Completed Orders")</th>
                                 <th scope="col">@_localization.Getkey("Deposit")</th>
                                 <th scope="col">@_localization.Getkey("Credit")</th>
                                 <th scope="col">@_localization.Getkey("Balance")</th>
-                                <th scope="col">@_localization.Getkey("Completed Orders")</th>
-                                <th scope="col"></th>
+                                <th scope="col">@_localization.Getkey("IsActive")</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -52,7 +78,7 @@
                                 :class="{ 'table-active': selectedCustomer && selectedCustomer.customerID === customer.customerID }"
                                 v-on:mouseleave="hover = false"
                                 :style="{ backgroundColor: hover ? 'lavenderblush' : '' }">
-                                <th scope="row">
+                                @*                                 <th scope="row">
                                     <div class="media align-items-center">
                                         <a href="#" class="avatar rounded-circle mr-3">
                                             <img alt="Image placeholder" src="https://raw.githack.com/creativetimofficial/argon-dashboard/master/assets/img/theme/bootstrap.jpg">
@@ -61,7 +87,8 @@
                                             <span class="mb-0 text-sm">{{ customer.companyName}}</span>
                                         </div>
                                     </div>
-                                </th>
+                                </th> *@
+                                <td>{{ customer.companyName }}</td>
                                 <td>{{ customer.phoneNumber }}</td>
                                 <td>{{ customer.email }}</td>
                                 <td>
@@ -77,9 +104,12 @@
                                 <td>{{customer.deposit}} USD</td>
                                 <td>{{customer.credit}} USD</td>
                                 <td>{{customer.balance}} USD</td>
+                                <td v-on:click="showConfirm = true">
+                                    <i v-on:click="modalConfirmationID = 1" data-toggle="modal" data-target="#confirmModal" class="fa fa-circle" :style="{'color': customer.isActive ? 'green' : 'red'}"></i>
+                                </td>
 
-                                <td class="text-right">
-                                    @* <div class="dropdown">
+                                @*                                 <td class="text-right">
+                                    <div class="dropdown">
                                             <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <i class="fas fa-ellipsis-v"></i>
                                             </a>
@@ -88,7 +118,7 @@
                                                 <a class="dropdown-item" href="#">Another action</a>
                                                 <a class="dropdown-item" href="#">Something else here</a>
                                             </div>
-                                        </div> *@
+                                        </div>
                                     <ul class="list-inline m-0">
                                         <li class="list-inline-item">
                                             <button class="btn btn-warning btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
@@ -97,38 +127,13 @@
                                             <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
                                         </li>
                                     </ul>
-                                </td>
+                                </td> *@
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
                 <div class="card-footer py-4">
-                    <!--Details-->
-                    <nav aria-label="..." style="float:left;">
-                        <ul class="pagination justify-content-end mb-0">
-                            <li class="page-item">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-usd mr-1"></i> @_localization.Getkey("Accounts")
-                                </button>
-                            </li>
-                            <li class="page-item active">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-calculator mr-1"></i> @_localization.Getkey("Transactions")
-                                </button>
-                            </li>
-                            <li class="page-item active">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-address-book mr-1"></i> @_localization.Getkey("Addresses")
-                                </button>
-                            </li>
-                            <li class="page-item active">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-user mr-1"></i> @_localization.Getkey("Contact")
-                                </button>
-                            </li>
-                        </ul>
-                    </nav>
                     <!--Paging-->
                     <nav aria-label="..." style="float:right;">
                         <ul class="pagination justify-content-end mb-0">
@@ -155,53 +160,302 @@
                             </li>
                         </ul>
                     </nav>
+                    <!--Details-->
+                    <nav aria-label="..." style="justify-items:center;">
+                        <ul class="pagination justify-content-end mb-0">
+                            <li class="page-item">
+                                <button class="btn btn-success" :class="{ active: detailType === 1 }" v-on:click="detailChanged(1)" type="button" style="border-radius:0px;margin-right:0px;">
+                                    <i class="fas fa-usd mr-1"></i> @_localization.Getkey("Accounts")
+                                </button>
+                            </li>
+                            <li class="page-item">
+                                <button class="btn btn-success" :class="{ active: detailType === 2 }" v-on:click="detailChanged(2)" type="button" style="border-radius:0px;margin-right:0px;">
+                                    <i class="fas fa-address-book mr-1"></i> @_localization.Getkey("Addresses")
+                                </button>
+                            </li>
+                            <li class="page-item">
+                                <button class="btn btn-success" :class="{ active: detailType === 3 }" v-on:click="detailChanged(3)" type="button" style="border-radius:0px;margin-right:0px;">
+                                    <i class="fas fa-user mr-1"></i> @_localization.Getkey("Contacts")
+                                </button>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>
-        <div class="table-responsive">
-            <table class="table align-items-center table-flush">
-                <thead class="thead-light">
+        <div class="col" v-if="selectedCustomer != null">
+            <!--Accounts-->
+            <table class="table align-items-center table-flush" v-if="detailType == 1">
+                <thead class="detailHead">
                     <tr>
                         <th scope="col">@_localization.Getkey("Account Name")</th>
                         <th scope="col">@_localization.Getkey("Currency")</th>
-                        <th scope="col">@_localization.Getkey("Deposit")</th>
-                        <th scope="col">@_localization.Getkey("Credit")</th>
-                        <th scope="col">@_localization.Getkey("Balance")</th>
-                        <th scope="col"></th>
+                        <th v-show="showEditAccount == 0 && showAddAccount == 0" scope="col">@_localization.Getkey("Deposit")</th>
+                        <th v-show="showEditAccount == 0 && showAddAccount == 0" scope="col">@_localization.Getkey("Credit")</th>
+                        <th v-show="showEditAccount == 0 && showAddAccount == 0" scope="col">@_localization.Getkey("Balance")</th>
+                        <th scope="col" class="text-right" style="width:260px;">
+                            <ul class="list-inline m-0">
+                                <li class="list-inline-item">
+                                    <button class="btn btn-success btn-sm rounded-0" v-bind:disabled="showEditAccount == 1" v-on:click="showCreateAccount()" type="button" data-toggle="tooltip" data-placement="top" title="Add"><i class="fa fa-plus"></i></button>
+                                </li>
+                            </ul>
+
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="hoverable-row"
-                        v-for="(customer, index) in customers"
-                        :key="customer.customerID"
-                        v-on:click="selectCustomer(customer)"
-                        :class="{ 'table-active': selectedCustomer && selectedCustomer.customerID === customer.customerID }"
+                    <tr v-if="showAddAccount == 1">
+                        <td>
+                            <input v-model="accountToCreate.accountName" type="text" id="AccountName" class="form-control form-control-lg" />
+                        </td>
+                        <td>
+                            <select v-model="accountToCreate.currencyID" class="select form-control">
+                                <option value="" disabled selected>Open this select menu</option>
+                                <option v-for="curr in currencies" :key="curr.id" :value="curr.id">
+                                    {{ curr.code }} ({{curr.symbol}})
+                                </option>
+                            </select>
+                        </td>
+                        <td>
+                            <input style="max-width:100px;" v-on:click="closeCreateAccount" data-mdb-ripple-init class="btn btn-danger btn-lg" value="@_localization.Getkey("Close")" />
+                            <input style="max-width:100px;" v-on:click="createAccount" data-mdb-ripple-init class="btn btn-primary btn-lg" type="submit" value="@_localization.Getkey("Submit")" />
+                        </td>
+                    </tr>
+                    <tr v-if="showEditAccount == 1">
+                        <td ><input v-model="selectedAccount.accountName" type="text" id="AccountName" class="form-control form-control-lg" /></td>
+                        <td >
+                            <select v-model="selectedAccount.currencyID" class="select form-control">
+                                <option value="" disabled selected>Open this select menu</option>
+                                <option v-for="curr in currencies" :key="curr.id" :value="curr.id">
+                                    {{ curr.code }} ({{curr.symbol}})
+                                </option>
+                            </select>
+                        </td>
+                        <td >
+                            <input style="max-width:100px;" v-on:click="closeEditAccount" data-mdb-ripple-init class="btn btn-danger btn-lg" value="@_localization.Getkey("Close")" />
+                            <input style="max-width:100px;" v-on:click="editAccount" data-mdb-ripple-init class="btn btn-primary btn-lg" type="submit" value="@_localization.Getkey("Submit")" />
+                        </td>
+                    </tr>
+                    <tr v-if="showEditAccount == 0 && showAddAccount == 0" class="hoverable-row"
+                        v-for="(account, index) in accounts"
+                        :key="account.id"
+                        v-on:click="selectAccount(account)"
+                        :class="{ 'table-active': selectedAccount && selectedAccount.id === account.id}"
                         v-on:mouseleave="hover = false"
                         :style="{ backgroundColor: hover ? 'lavenderblush' : '' }">
 
-                        <td>{{ customer.phoneNumber }}</td>
-                        <td>{{ customer.email }}</td>
-                        <td>{{customer.deposit}} USD</td>
-                        <td>{{customer.credit}} USD</td>
-                        <td>{{customer.balance}} USD</td>
-
+                        <td>{{ account.accountName }}</td>
+                        <td>{{ account.currency.symbol }}</td>
+                        <td>{{account.deposit}} {{ account.currency.symbol }}</td>
+                        <td>{{account.credit}} {{ account.currency.symbol }}</td>
+                        <td>{{account.balance}} {{ account.currency.symbol }}</td>
                         <td class="text-right">
-                            @* <div class="dropdown">
-                                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                <a class="dropdown-item" href="#">Action</a>
-                                                <a class="dropdown-item" href="#">Another action</a>
-                                                <a class="dropdown-item" href="#">Something else here</a>
-                                            </div>
-                                        </div> *@
                             <ul class="list-inline m-0">
                                 <li class="list-inline-item">
-                                    <button class="btn btn-warning btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
+                                    <button class="btn btn-primary btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Transactions"><i class="fa fa-calculator"></i><span>@_localization.Getkey("Transactions")</span></button>
                                 </li>
                                 <li class="list-inline-item">
-                                    <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                    <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Print"><i class="fa fa-print"></i></button>
+                                </li>
+                                <li class="list-inline-item">
+                                    <button v-on:click="showEditAccount=1" class="btn btn-warning btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
+                                </li>
+                                <li class="list-inline-item">
+                                    <button v-on:click="modalConfirmationID = 2" data-toggle="modal" data-target="#confirmModal" class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                </li>
+                            </ul>
+                        </td>
+
+                        
+                    </tr>
+                </tbody>
+            </table>
+            <!--Addresses-->
+            <table class="table align-items-center table-flush" v-if="detailType == 2">
+                <thead class="detailHead">
+                    <tr>
+                        <th scope="col">@_localization.Getkey("Country")</th>
+                        <th scope="col">@_localization.Getkey("State")</th>
+                        <th scope="col">@_localization.Getkey("City")</th>
+                        <th scope="col">@_localization.Getkey("Address")</th>
+                        <th scope="col" class="text-right" style="width:260px;">
+                            <ul class="list-inline m-0">
+                                <li class="list-inline-item">
+                                    <button class="btn btn-success btn-sm rounded-0" v-bind:disabled="showEditAddress == 1" v-on:click="showCreateAddress()" type="button" data-toggle="tooltip" data-placement="top" title="Add"><i class="fa fa-plus"></i></button>
+                                </li>
+                            </ul>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-if="showAddAddress == 1">
+                        <td>
+                            <select v-model="addressToCreate.countryID" v-on:change="GetStates(addressToCreate.countryID)" class="select form-control">
+                                <option value="" disabled selected>Open this select menu</option>
+                                <option v-for="country in countries" :key="country.id" :value="country.id">
+                                    {{ country.name }}
+                                </option>
+                            </select>
+                        </td>
+                        <td>
+                            <select v-model="addressToCreate.stateID" v-on:change="GetCities(addressToCreate.stateID)" class="select form-control">
+                                <option value="" disabled selected>Open this select menu</option>
+                                <option v-for="state in states" :key="state.id" :value="state.id">
+                                    {{ state.name }}
+                                </option>
+                            </select>
+                        </td>
+                        <td>
+                            <select v-model="addressToCreate.cityID" class="select form-control">
+                                <option value="" disabled selected>Open this select menu</option>
+                                <option v-for="city in cities" :key="city.id" :value="city.id">
+                                    {{ city.name }}
+                                </option>
+                            </select>
+                        </td>
+                        <td>
+                            <input v-model="addressToCreate.address" type="text" id="address" class="form-control form-control-lg" />
+                        </td>
+                        <td>
+                            <input style="max-width:100px;" v-on:click="closeCreateAddress" data-mdb-ripple-init class="btn btn-danger btn-lg" value="@_localization.Getkey("Close")" />
+                            <input style="max-width:100px;" v-on:click="createAddress" data-mdb-ripple-init class="btn btn-primary btn-lg" type="submit" value="@_localization.Getkey("Submit")" />
+                        </td>
+                    </tr>
+                    <tr v-if="showEditAddress == 1">
+                        <td>
+                            <select v-model="selectedAddress.countryID" v-on:change="GetStates(selectedAddress.countryID)" class="select form-control">
+                                <option value="" disabled selected>Open this select menu</option>
+                                <option v-for="country in countries" :key="country.id" :value="country.id">
+                                    {{ country.name }}
+                                </option>
+                            </select>
+                        </td>
+                        <td>
+                            <select v-model="selectedAddress.stateID" v-on:change="GetCities(selectedAddress.stateID)" class="select form-control">
+                                <option value="" disabled selected>Open this select menu</option>
+                                <option v-for="state in states" :key="state.id" :value="state.id">
+                                    {{ state.name }}
+                                </option>
+                            </select>
+                        </td>
+                        <td>
+                            <select v-model="selectedAddress.cityID" class="select form-control">
+                                <option value="" disabled selected>Open this select menu</option>
+                                <option v-for="city in cities" :key="city.id" :value="city.id">
+                                    {{ city.name }}
+                                </option>
+                            </select>
+                        </td>
+                        <td>
+                            <input v-model="selectedAddress.address" type="text" id="address" class="form-control form-control-lg" />
+                        </td>
+                        <td>
+                            <input style="max-width:100px;" v-on:click="closeEditAddress" data-mdb-ripple-init class="btn btn-danger btn-lg" value="@_localization.Getkey("Close")" />
+                            <input style="max-width:100px;" v-on:click="editAddress" data-mdb-ripple-init class="btn btn-primary btn-lg" type="submit" value="@_localization.Getkey("Submit")" />
+                        </td>
+                    </tr>
+                    <tr v-if="showEditAddress == 0 && showAddAddress == 0"
+                        class="hoverable-row"
+                        v-for="(address, index) in addresses"
+                        :key="address.id"
+                        v-on:click="selectAddress(address)"
+                        :class="{ 'table-active': selectedAddress && selectedAddress.id === address.id}"
+                        v-on:mouseleave="hover = false"
+                        :style="{ backgroundColor: hover ? 'lavenderblush' : '' }">
+
+                        <td>{{ address.countryName }}</td>
+                        <td>{{ address.stateName }}</td>
+                        <td>{{ address.cityName }}</td>
+                        <td>{{ address.address }}</td>
+
+                        <td class="text-right">
+                            <ul class="list-inline m-0">
+                                <li class="list-inline-item">
+                                    <button v-on:click="showEditAddress=1; getChainedAddress();" class="btn btn-warning btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
+                                </li>
+                                <li class="list-inline-item">
+                                    <button v-on:click="modalConfirmationID = 3" data-toggle="modal" data-target="#confirmModal" class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!--Contacts-->
+            <table class="table align-items-center table-flush" v-if="detailType == 3">
+                <thead class="detailHead">
+                    <tr>
+                        <th scope="col">@_localization.Getkey("Name")</th>
+                        <th scope="col">@_localization.Getkey("Surname")</th>
+                        <th scope="col">@_localization.Getkey("Phone")</th>
+                        <th scope="col">@_localization.Getkey("Address")</th>
+                        <th scope="col" class="text-right" style="width:260px;">
+                            <ul class="list-inline m-0">
+                                <li class="list-inline-item">
+                                    <button class="btn btn-success btn-sm rounded-0" v-bind:disabled="showEditContact == 1" v-on:click="showCreateContact()" type="button" data-toggle="tooltip" data-placement="top" title="Add"><i class="fa fa-plus"></i></button>
+                                </li>
+                            </ul>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-if="showAddContact == 1">
+                        <td>
+                            <input v-model="contactToCreate.name" type="text" class="form-control form-control-lg" />
+                        </td>
+                        <td>
+                            <input v-model="contactToCreate.surname" type="text" class="form-control form-control-lg" />
+                        </td>
+                        <td>
+                            <input v-model="contactToCreate.phone" type="text" class="form-control form-control-lg" />
+                        </td>
+                        <td>
+                            <input v-model="contactToCreate.address" type="text" class="form-control form-control-lg" />
+                        </td>
+                        <td>
+                            <input style="max-width:100px;" v-on:click="closeCreateContact" data-mdb-ripple-init class="btn btn-danger btn-lg" value="@_localization.Getkey("Close")" />
+                            <input style="max-width:100px;" v-on:click="createContact" data-mdb-ripple-init class="btn btn-primary btn-lg" type="submit" value="@_localization.Getkey("Submit")" />
+                        </td>
+                    </tr>
+                    <tr v-if="showEditContact == 1">
+                        <td>
+                            <input v-model="selectedContact.name" type="text" class="form-control form-control-lg" />
+                        </td>
+                        <td>
+                            <input v-model="selectedContact.surname" type="text" class="form-control form-control-lg" />
+                        </td>
+                        <td>
+                            <input v-model="selectedContact.phone" type="text" class="form-control form-control-lg" />
+                        </td>
+                        <td>
+                            <input v-model="selectedContact.address" type="text" class="form-control form-control-lg" />
+                        </td>
+                        <td>
+                            <input style="max-width:100px;" v-on:click="closeEditContact" data-mdb-ripple-init class="btn btn-danger btn-lg" value="@_localization.Getkey("Close")" />
+                            <input style="max-width:100px;" v-on:click="editContact" data-mdb-ripple-init class="btn btn-primary btn-lg" type="submit" value="@_localization.Getkey("Submit")" />
+                        </td>
+                    </tr>
+                    <tr v-if="showEditContact == 0 && showAddContact == 0"
+                        class="hoverable-row"
+                        v-for="(contact, index) in contacts"
+                        :key="contact.id"
+                        v-on:click="selectContact(contact)"
+                        :class="{ 'table-active': selectedContact && selectedContact.id === contact.id}"
+                        v-on:mouseleave="hover = false"
+                        :style="{ backgroundColor: hover ? 'lavenderblush' : '' }">
+
+                        <td>{{ contact.name }}</td>
+                        <td>{{ contact.surname }}</td>
+                        <td>{{ contact.phone }}</td>
+                        <td>{{ contact.address }}</td>
+
+                        <td class="text-right">
+                            <ul class="list-inline m-0">
+                                <li class="list-inline-item">
+                                    <button v-on:click="showEditContact=1" class="btn btn-warning btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
+                                </li>
+                                <li class="list-inline-item">
+                                    <button v-on:click="modalConfirmationID = 4" data-toggle="modal" data-target="#confirmModal" class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
                                 </li>
                             </ul>
                         </td>
@@ -211,100 +465,124 @@
         </div>
     </div>
     <!--Accounts Detail-->
-    <div class="main-content" v-if="pageType == 2">
+    <div class="main-content" v-show="pageType == 2">
         <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
-            <div class="card-body p-4 p-md-5">
-                <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
+            <div class="ml-4 mr-4 p-md-5">
                 <form>
-
-                    <div class="row">
-                        <div class="col-md-6 mb-4">
-
+                    <!--Customer Area-->
+                    <h2 class="mt-3 mb-2" style="text-decoration:underline;">@_localization.Getkey("Customer")</h2>
+                    <div class="row" style="border:1px solid #ccc;border-radius:10px;">
+                        <div class="col-md-4 mb-4 mt-2">
                             <div data-mdb-input-init class="form-outline">
-                                <input type="text" id="firstName" class="form-control form-control-lg" />
-                                <label class="form-label" for="firstName">First Name</label>
+                                <label class="form-label">@_localization.Getkey("Company")</label>
+                                <input type="text" v-model="customer.companyName" id="Company" class="form-control form-control-lg" />
                             </div>
-
                         </div>
-                        <div class="col-md-6 mb-4">
+                        <div class="col-md-4 mb-4 mt-2">
 
                             <div data-mdb-input-init class="form-outline">
-                                <input type="text" id="lastName" class="form-control form-control-lg" />
-                                <label class="form-label" for="lastName">Last Name</label>
+                                <label class="form-label">@_localization.Getkey("EMail")</label>
+                                <input v-model="customer.email" type="text" id="EMail" class="form-control form-control-lg" />
                             </div>
-
+                        </div>
+                        <div class="col-md-4 mb-4 mt-2">
+                            <div data-mdb-input-init class="form-outline">
+                                <label class="form-label">@_localization.Getkey("Phone")</label><br />
+                                <input type="text" v-model="customer.phoneNumber" id="phone" class="form-control form-control-lg">
+                            </div>
                         </div>
                     </div>
-
                     <div class="row">
-                        <div class="col-md-6 mb-4 d-flex align-items-center">
-
-                            <div data-mdb-input-init class="form-outline datepicker w-100">
-                                <input type="text" class="form-control form-control-lg" id="birthdayDate" />
-                                <label for="birthdayDate" class="form-label">Birthday</label>
-                            </div>
-
-                        </div>
-                        <div class="col-md-6 mb-4">
-
-                            <h6 class="mb-2 pb-1">Gender: </h6>
-
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender"
-                                       value="option1" checked />
-                                <label class="form-check-label" for="femaleGender">Female</label>
-                            </div>
-
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender"
-                                       value="option2" />
-                                <label class="form-check-label" for="maleGender">Male</label>
-                            </div>
-
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="otherGender"
-                                       value="option3" />
-                                <label class="form-check-label" for="otherGender">Other</label>
-                            </div>
-
-                        </div>
                     </div>
+                    <!--Address Area-->
+                    <h2 v-show="isCreate" class="mt-3 mb-2" style="text-decoration:underline;">@_localization.Getkey("Address")</h2>
+                    <div v-show="isCreate" class="row" style="border:1px solid #ccc;border-radius:10px;">
 
-                    <div class="row">
-                        <div class="col-md-6 mb-4 pb-2">
-
-                            <div data-mdb-input-init class="form-outline">
-                                <input type="email" id="emailAddress" class="form-control form-control-lg" />
-                                <label class="form-label" for="emailAddress">Email</label>
-                            </div>
-
-                        </div>
-                        <div class="col-md-6 mb-4 pb-2">
-
-                            <div data-mdb-input-init class="form-outline">
-                                <input type="tel" id="phoneNumber" class="form-control form-control-lg" />
-                                <label class="form-label" for="phoneNumber">Phone Number</label>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-12">
-
-                            <select class="select form-control-lg">
-                                <option value="1" disabled>Choose option</option>
-                                <option value="2">Subject 1</option>
-                                <option value="3">Subject 2</option>
-                                <option value="4">Subject 3</option>
+                        <div class="col-md-3 mb-4 mt-2">
+                            <label class="form-label">@_localization.Getkey("Country")</label>
+                            <select v-model="customer.addresses[0].countryID" v-on:change="GetStates(customer.addresses[0].countryID)" class="select form-control">
+                                <option value="" disabled selected>Open this select menu</option>
+                                <option v-for="country in countries" :key="country.id" :value="country.id">
+                                    {{ country.name }}
+                                </option>
                             </select>
-                            <label class="form-label select-label">Choose option</label>
-
+                        </div>
+                        <div class="col-md-3 mb-4 mt-2">
+                            <label class="form-label">@_localization.Getkey("State")</label>
+                            <select v-model="customer.addresses[0].stateID" v-on:change="GetCities(customer.addresses[0].stateID)" class="select form-control">
+                                <option value="" disabled selected>Open this select menu</option>
+                                <option v-for="state in states" :key="state.id" :value="state.id">
+                                    {{ state.name }}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-3 mb-4 mt-2">
+                            <label class="form-label">@_localization.Getkey("City")</label>
+                            <select v-model="customer.addresses[0].cityID" class="select form-control">
+                                <option value="" disabled selected>Open this select menu</option>
+                                <option v-for="city in cities" :key="city.id" :value="city.id">
+                                    {{ city.name }}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-3 mb-4 mt-2">
+                            <label class="form-label">@_localization.Getkey("Address")</label>
+                            <input v-model="customer.addresses[0].address" type="text" id="Address" class="form-control form-control-lg" />
                         </div>
                     </div>
+                    <!--Contact Area-->
+                    <h2 v-show="isCreate" class="mt-3 mb-2" style="text-decoration:underline;">@_localization.Getkey("Contact")</h2>
+                    <div v-show="isCreate" class="row" style="border:1px solid #ccc;border-radius:10px;">
+                        <div class="col-md-3 mb-4 mt-2">
+                            <div data-mdb-input-init class="form-outline">
+                                <label class="form-label">@_localization.Getkey("Name")</label>
+                                <input v-model="customer.contacts[0].name" type="text" id="Name" class="form-control form-control-lg" />
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-4 mt-2">
+                            <div data-mdb-input-init class="form-outline">
+                                <label class="form-label">@_localization.Getkey("Surname")</label>
+                                <input v-model="customer.contacts[0].surname" type="text" id="Surname" class="form-control form-control-lg" />
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-4 mt-2">
+
+                            <div data-mdb-input-init class="form-outline">
+                                <label class="form-label">@_localization.Getkey("PhoneNumber")</label>
+                                <input v-model="customer.contacts[0].phone" type="text" id="contactPhoneNumber" class="form-control form-control-lg" />
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-4 mt-2">
+
+                            <div data-mdb-input-init class="form-outline">
+                                <label class="form-label">@_localization.Getkey("Note")</label>
+                                <input v-model="customer.contacts[0].note" type="text" id="Note" class="form-control form-control-lg" />
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--Account Area-->
+                    <h2 v-show="isCreate" class="mt-3 mb-2" style="text-decoration:underline;">@_localization.Getkey("Account")</h2>
+                    <div v-show="isCreate" class="row" style="border:1px solid #ccc;border-radius:10px;">
+                        <div class="col-md-3 mb-4 mt-2">
+                            <label class="form-label">@_localization.Getkey("Account Name")</label>
+                            <input v-model="customer.accounts[0].accountName" type="text" id="AccountName" class="form-control form-control-lg" />
+                        </div>
+                        <div class="col-md-3 mb-4 mt-2">
+                            <label class="form-label">@_localization.Getkey("Currency")</label>
+                            <select v-model="customer.accounts[0].currencyID" class="select form-control">
+                                <option value="" disabled selected>Open this select menu</option>
+                                <option v-for="curr in currencies" :key="curr.id" :value="curr.id">
+                                    {{ curr.code }} ({{curr.symbol}})
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
 
                     <div class="mt-4 pt-2">
-                        <input data-mdb-ripple-init class="btn btn-primary btn-lg" type="submit" value="Submit" />
+                        <input v-show="isCreate" v-on:click="createCustomer" data-mdb-ripple-init class="btn btn-primary btn-lg" type="submit" value="Submit" />
+                        <input v-show="isEdit" v-on:click="editCustomer" data-mdb-ripple-init class="btn btn-primary btn-lg" type="submit" value="Submit" />
                     </div>
 
                 </form>
@@ -313,6 +591,38 @@
     </div>
 </div>
 
+<style>
+    .detailHead {
+        background-color: #4e73df !important;
+    }
 
-<script src="~/js/Customer.js"></script>
+        .detailHead th {
+            color: #fff !important;
+        }
+</style>
+<script src="~/js/baseprops.js"></script>
 <script src="~/js/Layout.js"></script>
+<script type="module" src="~/js/Customer.js"></script>
+
+
+<script>
+    window.onload = function() {
+        var input = document.querySelector("#phone");
+        var input2 = document.querySelector("#contactPhoneNumber");
+        intlTelInput(input, {
+         initialCountry: "tr",
+         autoPlaceholder: 'aggressive',
+         utilsScript: "/extJS/utils.js"
+        });
+        intlTelInput(input2, {
+         initialCountry: "tr",
+         autoPlaceholder: 'aggressive',
+         utilsScript: "/extJS/utils.js"
+        });
+      };
+</script>
+
+
+
+
+

@@ -1,0 +1,123 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //Layout = null;
+    ViewData["Title"] = "Stocks";
+}
+
+
+
+<div id="Stock">
+    <!--Main Content-->
+    <div class="main-content" v-show="pageType == 1">
+        <!-- Table -->
+        <div class="col">
+            <div class="card shadow">
+                <div  class="card-header border-0">
+                    <div style="float:left;" class="btn-group" role="group">
+                        <button @* v-on:click="AddCustomerForm" *@ style="margin-right:0px;" class="btn btn-success" data-item="0_0" title="Add" type="button">
+                            <i class="fas fa-plus mr-1"></i><span> </span>
+                            </button>
+                        <button @* v-on:click="EditCustomerForm" *@ style="margin-right:0px;" class="btn btn-warning" data-item="0_0" title="Edit" type="button">
+                            <i class="fas fa-edit mr-1"></i><span> </span>
+                        </button>
+                        <button v-on:click="RefreshStocks" style="margin-right:0px;" class="btn btn-info" data-item="0_0" title="Refresh" type="button">
+                            <i class="fas fa-refresh mr-1"></i><span> </span>
+                        </button>
+                    </div>
+                    <div style="float:right;" class="d-flex align-items-center mt-2 mt-md-0">
+                        <div class="input-group">
+                            <input v-on:keyup.enter="searchStock" v-model="searchText" type="text" class="form-control bg-light small" placeholder="Search for..."
+                                   aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button v-on:click="searchStock" class="btn btn-success" style="max-height:38px;" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">@_localization.Getkey("StockNo")</th>
+                                <th scope="col">@_localization.Getkey("Stock")</th>
+                                <th scope="col">@_localization.Getkey("Measurement")</th>
+                                <th scope="col">@_localization.Getkey("Group")</th>
+                                <th scope="col">@_localization.Getkey("Department")</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="hoverable-row"
+                                v-for="(stock, index) in stocks"
+                                :key="stock.id"
+                                v-on:click="selectStock(stock)"
+                                :class="{ 'table-active': selectedStock && selectedStock.id === stock.id }"
+                                v-on:mouseleave="hover = false"
+                                :style="{ backgroundColor: hover ? 'lavenderblush' : '' }">
+                                <td>{{ stock.stockNo }}</td>
+                                <td>{{ stock.stockName }}</td>
+                                <td>{{ stock.measurementSymbol }}</td>
+                                <td>{{ stock.groupName }}</td>
+                                <td>{{ stock.departmentName }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card-footer py-4">
+                    <!--Paging-->
+                    <nav aria-label="..." style="float:right;">
+                        <ul class="pagination justify-content-end mb-0">
+                            <li class="page-item" v-show="page > 1">
+                                <a class="page-link" v-on:click="pageChange(page - 1)" tabindex="-1">
+                                    <i class="fas fa-angle-left"></i>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                            </li>
+                            <li class="page-item" v-show="page - 1 > 0">
+                                <a class="page-link" v-on:click="pageChange(page - 1)">{{ page - 1 }} <span class="sr-only">(Previous)</span></a>
+                            </li>
+                            <li class="page-item active">
+                                <a class="page-link">{{ page }} <span class="sr-only">(Current)</span></a>
+                            </li>
+                            <li class="page-item" v-show="totalPageCount >= page + 1">
+                                <a class="page-link" v-on:click="pageChange(page + 1)">{{ page + 1 }} <span class="sr-only">(Next)</span></a>
+                            </li>
+                            <li class="page-item" v-show="totalPageCount > page">
+                                <a class="page-link" v-on:click="pageChange(page + 1)">
+                                    <i class="fas fa-angle-right"></i>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!--Details-->
+                    <nav aria-label="..." style="justify-items:center;">
+                        <ul class="pagination justify-content-end mb-0">
+                            <li class="page-item">
+                                <button class="btn btn-success" :class="{ active: detailType === 1 }" v-on:click="detailChanged(1)" type="button" style="border-radius:0px;margin-right:0px;">
+                                    <i class="fas fa-usd mr-1"></i> @_localization.Getkey("Summary")
+                                </button>
+                            </li>
+                            <li class="page-item">
+                                <button class="btn btn-success" :class="{ active: detailType === 2 }" v-on:click="detailChanged(2)" type="button" style="border-radius:0px;margin-right:0px;">
+                                    <i class="fas fa-address-book mr-1"></i> @_localization.Getkey("Transactions")
+                                </button>
+                            </li>
+                            <li class="page-item">
+                                <button class="btn btn-success" :class="{ active: detailType === 3 }" v-on:click="detailChanged(3)" type="button" style="border-radius:0px;margin-right:0px;">
+                                    <i class="fas fa-user mr-1"></i> @_localization.Getkey("Warehouses")
+                                </button>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/baseprops.js"></script>
+<script src="~/js/Layout.js"></script>
+<script type="module" src="~/js/Stock.js"></script>

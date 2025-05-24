@@ -10,41 +10,38 @@
     <link href="~/css/styles.css" rel="stylesheet" />
     <link href="~/css/spinner.css" rel="stylesheet" />
 
-    <!-- Tailwind / Argon Dashboard -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icon-css@4.7.0/css/flag-icon.min.css">
-
     <!-- Icons & Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <!-- Vue Production -->
-    @* <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.min.js"></script> *@
-
-    <!-- Vue Devtools -->
-    @* <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script> *@
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-
-    <script src="~/js/Layout.js"></script>
-    <script src="~/js/baseprops.js"></script>
-    
-
-
     <!-- Bootstrap Bundle JS -->
     <script src="~/assets/vendor/jquery/jquery.min.js"></script>
     <script src="~/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
     <script src="~/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="~/assets/js/sb-admin-2.min.js"></script>
+
+    <!-- Vue JS -->
+    <script src="~/extJS/vue.global.js"></script>
+    @*<script src="~/extjs/vue.global.prod.js"></script> *@
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="~/js/Layout.js"></script>
+
+    <!-- Vue Select2 Maybe One Day-->
+
+    <script src="~/extjs/intltelinput-jquery.min.js"></script>
+    <link href="~/css/intltelinput.min.css" rel="stylesheet" />
+    <script type="module" src="~/extjs/utils.js"></script>
+    <script src="~/extjs/intltelinput.min.js"></script>
+
 
 </head>
 <body id="page-top">
 
     <!-- Page Wrapper -->
     <div>
-        
+
         <div id="wrapper">
-           
+
             <!-- Sidebar -->
             <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -54,7 +51,7 @@
                     <div class="sidebar-brand-icon rotate-n-15">
                         <i class="fas fa-laugh-wink"></i>
                     </div>
-                    <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                    <div class="sidebar-brand-text mx-3">Project E</div>
                 </a>
 
                 <!-- Divider -->
@@ -81,14 +78,13 @@
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                        aria-expanded="true" aria-controls="collapseTwo">
-                        <i class="fas fa-fw fa-cog"></i>
+                        <i class="fas fa-fw fa-user"></i>
                         <span>@_localization.Getkey("Customers")</span>
                     </a>
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Custom Components:</h6>
-                            <a class="collapse-item" asp-controller="Customer"
-                               asp-action="Index">@_localization.Getkey("Cards")</a>
+                            <h6 class="collapse-header">@_localization.Getkey("Customer Components")</h6>
+                            <a class="collapse-item" asp-controller="Customer" asp-action="Index">@_localization.Getkey("Cards")</a>
                             <a class="collapse-item" href="cards.html">@_localization.Getkey("Transactions")</a>
                         </div>
                     </div>
@@ -96,25 +92,40 @@
 
                 <!-- Nav Item - Utilities Collapse Menu -->
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                       aria-expanded="true" aria-controls="collapseUtilities">
-                        <i class="fas fa-fw fa-wrench"></i>
-                        <span>Utilities</span>
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseStocks"
+                       aria-expanded="true" aria-controls="collapseStocks">
+                        <i class="fas fa-fw fa-list-ol"></i>
+                        <span>@_localization.Getkey("Stocks")</span>
                     </a>
-                    <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                    <div id="collapseStocks" class="collapse" aria-labelledby="headingUtilities"
                          data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Custom Utilities:</h6>
-                            <a class="collapse-item" href="utilities-color.html">Colors</a>
-                            <a class="collapse-item" href="utilities-border.html">Borders</a>
-                            <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                            <a class="collapse-item" href="utilities-other.html">Other</a>
+                            <h6 class="collapse-header">@_localization.Getkey("Stock Components")</h6>
+                            <a class="collapse-item" asp-controller="Stock" asp-action="Index">@_localization.Getkey("Cards")</a>
+                            <a class="collapse-item" asp-controller="Stock" asp-action="Warehouses">@_localization.Getkey("Warehouses")</a>
+                            <a class="collapse-item" asp-controller="Stock" asp-action="Departments">@_localization.Getkey("Departments")</a>
+                            <a class="collapse-item" asp-controller="Stock" asp-action="StockGroups">@_localization.Getkey("Stock Groups")</a>
+                            <a class="collapse-item" asp-controller="Stock" asp-action="Tax">@_localization.Getkey("Tax")</a>
                         </div>
                     </div>
                 </li>
-
+                <!-- Nav Item - Utilities Collapse Menu -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrders"
+                       aria-expanded="true" aria-controls="collapseOrders">
+                        <i class="fas fa-fw fa-shopping-cart"></i>
+                        <span>@_localization.Getkey("Orders")</span>
+                    </a>
+                    <div id="collapseOrders" class="collapse" aria-labelledby="headingUtilities"
+                         data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">@_localization.Getkey("Order Components")</h6>
+                            <a class="collapse-item" href="utilities-color.html">@_localization.Getkey("Customer Orders")</a>
+                        </div>
+                    </div>
+                </li>
                 <!-- Divider -->
-                <hr class="sidebar-divider">
+                @*  <hr class="sidebar-divider">
 
                 <!-- Heading -->
                 <div class="sidebar-heading">
@@ -156,7 +167,7 @@
                         <i class="fas fa-fw fa-table"></i>
                         <span>Tables</span>
                     </a>
-                </li>
+                </li> *@
 
                 <!-- Divider -->
                 <hr class="sidebar-divider d-none d-md-block">
@@ -167,17 +178,17 @@
                 </div>
 
                 <!-- Sidebar Message -->
-                <div class="sidebar-card d-none d-lg-flex">
-                    <img class="sidebar-card-illustration mb-2" @* src="img/undraw_rocket.svg" *@ alt="...">
+                @* <div class="sidebar-card d-none d-lg-flex">
+                    <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg"  alt="...">
                     <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
                     <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-                </div>
+                </div> *@
 
             </ul>
             <!-- End of Sidebar -->
             <!-- Content Wrapper -->
             <div id="content-wrapper" class="d-flex flex-column">
-              
+
                 <!-- Main Content -->
                 <div id="content">
                     <div id="Layout">
@@ -249,147 +260,18 @@
                                             <h6 class="dropdown-header">
                                                 @_localization.Getkey("Language")
                                             </h6>
-                                            <a class="dropdown-item d-flex align-items-center" asp-controller="Home"
-                                               asp-action="ChangeLanguage"
-                                               asp-route-culture="en-US"
-                                               v-on:click="selectLanguage('en-US')"
-                                               class="dropdown-item">
+                                            <a class="dropdown-item d-flex align-items-center"
+                                               v-on:click="selectLanguage('en-US')">
                                                 <i class="flag-icon flag-icon-gb"></i> English
                                             </a>
-                                            <a class="dropdown-item d-flex align-items-center" asp-controller="Home"
-                                               asp-action="ChangeLanguage"
-                                               asp-route-culture="tr-TR"
-                                               v-on:click="selectLanguage('tr-TR')"
-                                               class="dropdown-item">
+                                            <a class="dropdown-item d-flex align-items-center"
+                                               v-on:click="selectLanguage('tr-TR')">
                                                 <i class="flag-icon flag-icon-tr"></i> Türkçe
                                             </a>
                                         </div>
                                     </div>
                                 </li>
-                                <!-- Nav Item - Alerts -->
-                                <li class="nav-item dropdown no-arrow mx-1">
-                                    <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-bell fa-fw"></i>
-                                        <!-- Counter - Alerts -->
-                                        <span class="badge badge-danger badge-counter">3+</span>
-                                    </a>
-                                    <!-- Dropdown - Alerts -->
-                                    <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                         aria-labelledby="alertsDropdown">
-                                        <h6 class="dropdown-header">
-                                            Alerts Center
-                                        </h6>
-                                        <a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="mr-3">
-                                                <div class="icon-circle bg-primary">
-                                                    <i class="fas fa-file-alt text-white"></i>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div class="small text-gray-500">December 12, 2019</div>
-                                                <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                                            </div>
-                                        </a>
-                                        <a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="mr-3">
-                                                <div class="icon-circle bg-success">
-                                                    <i class="fas fa-donate text-white"></i>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div class="small text-gray-500">December 7, 2019</div>
-                                                $290.29 has been deposited into your account!
-                                            </div>
-                                        </a>
-                                        <a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="mr-3">
-                                                <div class="icon-circle bg-warning">
-                                                    <i class="fas fa-exclamation-triangle text-white"></i>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div class="small text-gray-500">December 2, 2019</div>
-                                                Spending Alert: We've noticed unusually high spending for your account.
-                                            </div>
-                                        </a>
-                                        <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                                    </div>
-                                </li>
-
-                                <!-- Nav Item - Messages -->
-                                <li class="nav-item dropdown no-arrow mx-1">
-                                    <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-envelope fa-fw"></i>
-                                        <!-- Counter - Messages -->
-                                        <span class="badge badge-danger badge-counter">7</span>
-                                    </a>
-                                    <!-- Dropdown - Messages -->
-                                    <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                         aria-labelledby="messagesDropdown">
-                                        <h6 class="dropdown-header">
-                                            Message Center
-                                        </h6>
-                                        <a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="dropdown-list-image mr-3">
-                                                <img class="rounded-circle" @* src="img/undraw_profile_1.svg" *@
-                                                     alt="...">
-                                                <div class="status-indicator bg-success"></div>
-                                            </div>
-                                            <div class="font-weight-bold">
-                                                <div class="text-truncate">
-                                                    Hi there! I am wondering if you can help me with a
-                                                    problem I've been having.
-                                                </div>
-                                                <div class="small text-gray-500">Emily Fowler · 58m</div>
-                                            </div>
-                                        </a>
-                                        <a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="dropdown-list-image mr-3">
-                                                <img class="rounded-circle" @* src="img/undraw_profile_2.svg" *@
-                                                     alt="...">
-                                                <div class="status-indicator"></div>
-                                            </div>
-                                            <div>
-                                                <div class="text-truncate">
-                                                    I have the photos that you ordered last month, how
-                                                    would you like them sent to you?
-                                                </div>
-                                                <div class="small text-gray-500">Jae Chun · 1d</div>
-                                            </div>
-                                        </a>
-                                        <a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="dropdown-list-image mr-3">
-                                                <img class="rounded-circle" @* src="img/undraw_profile_3.svg" *@
-                                                     alt="...">
-                                                <div class="status-indicator bg-warning"></div>
-                                            </div>
-                                            <div>
-                                                <div class="text-truncate">
-                                                    Last month's report looks great, I am very happy with
-                                                    the progress so far, keep up the good work!
-                                                </div>
-                                                <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                                            </div>
-                                        </a>
-                                        <a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="dropdown-list-image mr-3">
-                                                <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                                     alt="...">
-                                                <div class="status-indicator bg-success"></div>
-                                            </div>
-                                            <div>
-                                                <div class="text-truncate">
-                                                    Am I a good boy? The reason I ask is because someone
-                                                    told me that people say this to all dogs, even if they aren't good...
-                                                </div>
-                                                <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                                            </div>
-                                        </a>
-                                        <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-                                    </div>
-                                </li>
+                           
 
                                 <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -454,13 +336,14 @@
 
 
     @*     @RenderSection("Scripts", required: false)*@
+
 </body>
 
 </html>
 
 
 <script>
-        // Toggle the side navigation
+    // Toggle the side navigation
     $("#sidebarToggle, #sidebarToggleTop").on('click', function(e) {
       $("body").toggleClass("sidebar-toggled");
       $(".sidebar").toggleClass("toggled");
@@ -470,3 +353,13 @@
     });
 </script>
 
+
+<style>
+    .iti {
+        --iti-path-flags-1x: url('/img/flags.webp');
+        --iti-path-flags-2x: url('/img/flags@2x.webp');
+        --iti-path-globe-1x: url('/img/globe.webp');
+        --iti-path-globe-2x: url('/img/globe@2x.webp');
+        width:100%;
+    }
+</style>

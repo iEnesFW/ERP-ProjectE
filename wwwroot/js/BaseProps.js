@@ -4,7 +4,7 @@
     userID: null,
     compID: null,
     modules: null,
-    selectedLang : 'tr-TR',
+    selectedLang : null,
     baseURL: "https://localhost:5080/api/"
 });
 
